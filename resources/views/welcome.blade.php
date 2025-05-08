@@ -26,9 +26,9 @@
             </div>
             <nav class="space-x-4">
                 <a href="#" class="hover:text-yellow-300">Accueil</a>
-                <a href="#" class="hover:text-yellow-300">Animaux</a>
+                <a href="#" class="hover:text-yellow-300">Liste des animaux</a>
                 <a href="#" class="hover:text-yellow-300">Employés</a>
-                <a href="#" class="hover:text-yellow-300">Contact</a>
+                <a href="#" class="hover:text-yellow-300">Authentification</a>
             </nav>
         </div>
     </header>
@@ -41,18 +41,17 @@
 
     <!-- Slider Animaux -->
     <section class="py-12 bg-white px-6">
-        <h3 class="text-3xl font-bold text-green-700 mb-6">🐑 Nos Animaux</h3>
+        <h3 class="text-3xl font-bold text-green-700 mb-6 text-center">Nos Animaux</h3>
         <div class="swiper mySwiper mb-8">
             <div class="swiper-wrapper">
                 @foreach ($animaux as $animal)
                     <div class="swiper-slide">
-                        <div class="bg-green-100 rounded-2xl shadow-md p-6 w-96 h-80 flex flex-col justify-between">
-
-                            <img src="poulet.jpg" alt="Animal" class="rounded mb-2">
+                        <div class="bg-green-100 rounded-2xl shadow-md p-6 w-96 flex flex-col items-center text-center">
+                            <img src="poulet.jpg" alt="Animal" class="rounded mb-4 h-40 w-full object-cover">
                             <h4 class="text-xl font-semibold text-yellow-600">{{ $animal->nom }}</h4>
                             <p class="text-green-800">Espèce : {{ $animal->espece }}</p>
                             <p class="text-green-800">Âge : {{ $animal->age }} ans</p>
-                            <span class="text-sm text-white bg-green-600 px-2 py-1 rounded-full self-start">
+                            <span class="text-sm text-white bg-green-600 px-3 py-1 mt-2 rounded-full">
                                 {{ $animal->etat }}
                             </span>
                         </div>
@@ -65,56 +64,57 @@
         </div>
     </section>
 
-    <!-- Slider Employés -->
-    <section class="py-12 bg-yellow-50 px-6">
-        <h3 class="text-3xl font-bold text-green-700 mb-6">👨‍🌾 Nos Employés</h3>
-        <div class="swiper mySwiper mb-8">
-            <div class="swiper-wrapper">
+
+   <!-- Slider Employés -->
+   <section class="py-12 bg-yellow-50 px-6">
+    <h3 class="text-3xl font-bold text-green-700 mb-6 text-center">Nos Employés</h3>
+
+    <div class="overflow-x-auto">
+        <table class="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
+            <thead class="bg-green-600 text-white">
+                <tr>
+                    <th class="py-3 px-6 text-left">Nom</th>
+                    <th class="py-3 px-6 text-left">Poste</th>
+                    <th class="py-3 px-6 text-left">Date d'embauche</th>
+                </tr>
+            </thead>
+            <tbody class="text-green-800">
                 @foreach ($employes as $employe)
-                    <div class="swiper-slide">
-                        <div class="bg-green-100 rounded-2xl shadow-md p-6 w-96 h-80 flex flex-col justify-between">
-
-                           
-                            <h4 class="text-xl font-semibold text-yellow-600">{{ $employe->nom }}</h4>
-                            <p class="text-green-800">Poste : {{ $employe->poste }}</p>
-                            <p class="text-green-800">Depuis : {{ $employe->date_embauche }}</p>
-                        </div>
-                    </div>
+                    <tr class="border-b border-green-200 hover:bg-green-50">
+                        <td class="py-3 px-6">{{ $employe->nom }}</td>
+                        <td class="py-3 px-6">{{ $employe->poste }}</td>
+                        <td class="py-3 px-6">{{ $employe->date_embauche }}</td>
+                    </tr>
                 @endforeach
-            </div>
-            <div class="swiper-button-next text-green-700"></div>
-            <div class="swiper-button-prev text-green-700"></div>
-            <div class="swiper-pagination"></div>
-        </div>
-    </section>
+            </tbody>
+        </table>
+    </div>
+</section>
 
-    <!-- Sponsors -->
-    <section class="py-12 bg-white px-6">
-        <h3 class="text-3xl font-bold text-green-700 mb-6 text-center">🤝 Nos Sponsors</h3>
-        <div class="flex justify-center items-center gap-12 flex-wrap">
-            <img src="https://via.placeholder.com/100x50" alt="Sponsor 1">
-            <img src="https://via.placeholder.com/100x50" alt="Sponsor 2">
-            <img src="https://via.placeholder.com/100x50" alt="Sponsor 3">
-        </div>
-    </section>
+
+
+
 
     <!-- Moments phares -->
     <section class="py-12 bg-yellow-50 px-6">
-        <h3 class="text-3xl font-bold text-green-700 mb-6 text-center">📸 Moments phares</h3>
+        <h3 class="text-3xl font-bold text-green-700 mb-6 text-center"> Moments phares</h3>
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-            <img src="téléchargement.jpg" alt="Moment 1" class="rounded shadow">
-            <img src="images.jpg" alt="Moment 2" class="rounded shadow">
-            <img src="téléchargement (1).jpg" alt="Moment 3" class="rounded shadow">
+            <img src="6.jpg" alt="Moment 1" class="w-full h-60 object-cover rounded shadow">
+            <img src="5.jpg" alt="Moment 2" class="w-full h-60 object-cover rounded shadow">
+            <img src="téléchargement (1).jpg" alt="Moment 3" class="w-full h-60 object-cover rounded shadow">
         </div>
     </section>
+
+
+
 
     <!-- Contact / Adresse -->
     <section class="py-12 bg-green-100 px-6">
         <h3 class="text-3xl font-bold text-green-800 mb-4 text-center">📬 Contact & Adresse</h3>
         <div class="max-w-xl mx-auto text-green-800 text-center">
-            <p><strong>Adresse :</strong> Ferme Moderne, Route des champs, 12345 Ville</p>
-            <p><strong>Téléphone :</strong> +33 1 23 45 67 89</p>
-            <p><strong>Email :</strong> contact@fermemo.fr</p>
+            <p><strong>Adresse :</strong> Rufisque</p>
+            <p><strong>Téléphone :</strong> +221 78 106 51 98</p>
+            <p><strong>Email :</strong> marif@gmail.com</p>
         </div>
     </section>
 
